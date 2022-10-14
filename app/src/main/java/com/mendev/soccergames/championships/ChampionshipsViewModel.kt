@@ -2,10 +2,10 @@ package com.mendev.soccergames.championships
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mendev.soccergames.championships.model.Championship
 import com.mendev.soccergames.data.repository.SoccerGamesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,13 +16,11 @@ class ChampionshipsViewModel @Inject constructor(private val repository: SoccerG
 
     val championshipsLiveData = MutableLiveData<List<Championship>>()
 
-    fun getChampionships() {
-        CoroutineScope(Dispatchers.Main).launch {
-            val championships =
-                withContext(Dispatchers.Default) {
-                    repository.getChampionships()
-                }
-            championshipsLiveData.value = championships
-        }
+    fun getChampionships() = viewModelScope.launch {
+        val championships =
+            withContext(Dispatchers.Default) {
+                repository.getChampionships()
+            }
+        championshipsLiveData.value = championships
     }
 }
