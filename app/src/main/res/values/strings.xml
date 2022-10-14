@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Soccer Games</string>
+
+    <string name="championships_title">Campeonatos</string>
 </resources>

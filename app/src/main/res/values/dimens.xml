@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="championship_layout_padding">16dp</dimen>
+    <dimen name="championship_text_title_size">20sp</dimen>
+    <dimen name="championship_recycler_margin_top">16dp</dimen>
+</resources>
