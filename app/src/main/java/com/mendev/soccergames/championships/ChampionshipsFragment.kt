@@ -7,7 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mendev.soccergames.R
-import com.mendev.soccergames.championships.adapters.ChampionshipsAdapter
+import com.mendev.soccergames.championships.adapters.ChampionshipsView
+import com.mendev.soccergames.core.view.adapter.BaseAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +25,11 @@ class ChampionshipsFragment : Fragment(R.layout.fragment_championships) {
             with(recyclerView) {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireContext())
-                adapter = ChampionshipsAdapter(championships)
+                adapter = BaseAdapter {
+                    ChampionshipsView(it)
+                }.apply {
+                    items = championships.toMutableList()
+                }
             }
         }
 

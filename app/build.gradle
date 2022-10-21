@@ -51,6 +51,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.fragment:fragment-ktx:1.5.3'
 
+    // common:core
+    implementation project(path: ':common:core')
+
     // life cycle
     def life_cycle_version = '2.5.1'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_cycle_version"
